@@ -1,3 +1,46 @@
-<Solution>
-  <Project Path="Login Validation/Login Validation.csproj" />
-</Solution>
+using System;
+
+namespace LoginSystem
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Predefined correct login credentials
+            string correctLogin = "admin";
+            string correctPassword = "1234";
+
+            int attempts = 0;
+            bool isLoggedIn = false;
+
+            while (attempts < 3)
+            {
+                Console.Write("Enter Login: ");
+                string login = Console.ReadLine();
+
+                Console.Write("Enter Password: ");
+                string password = Console.ReadLine();
+
+                if (login == correctLogin && password == correctPassword)
+                {
+                    Console.WriteLine("\nLogin Successful!");
+                    isLoggedIn = true;
+                    break;
+                }
+                else
+                {
+                    attempts++;
+                    Console.WriteLine("\nInvalid login or password.");
+                    Console.WriteLine("Attempts left: " + (3 - attempts));
+                }
+            }
+
+            if (!isLoggedIn)
+            {
+                Console.WriteLine("\nYou have been rejected after 3 wrong attempts.");
+            }
+
+            Console.ReadLine(); // Keep console open
+        }
+    }
+}
